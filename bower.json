@@ -1,0 +1,24 @@
+{
+  "name": "kq",
+  "version": "0.0.1",
+  "authors": [
+    "Calvin Chan <calvin.chan.h@gmail.com>"
+  ],
+  "description": "kq.js",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "https://github.com/thecalvinchan",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "~2.3.0",
+    "jquery": "~2.1.4",
+    "backbone": "~1.2.1",
+    "requirejs": "~2.1.19"
+  }
+}
