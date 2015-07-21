@@ -20,5 +20,7 @@ require.config({
 require(['js/app'], function(App) {
     // defines app.js as a dependency and
     // invokes the initialize method inside app.js
-    new App();
+    new App({
+        screenHeight: 600
+    });
 });
