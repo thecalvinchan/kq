@@ -38,6 +38,9 @@ return Backbone.View.extend({
     },
     update: function() {
         this.game.physics.arcade.collide(this.worker, this.map.platforms);
+        this.game.physics.arcade.collide(this.worker, this.map.berries, Worker.becomeSuper);
+        this.game.physics.arcade.collide(this.map.platforms, this.map.berries);
+        this.game.physics.arcade.collide(this.map.berries, this.map.berries);
         
         var cursors = this.game.input.keyboard.createCursorKeys();
 
