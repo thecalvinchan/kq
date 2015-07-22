@@ -26,6 +26,7 @@ return Backbone.View.extend({
         this.game.load.image('ground', 'assets/sprites/platform.png');
         this.game.load.image('star', 'assets/sprites/star.png');
         this.game.load.spritesheet('dude', 'assets/sprites/dude.png', 32, 48);
+        this.game.load.image('gate', 'assets/sprites/baddie.png');
     },
     create: function() {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -35,10 +36,13 @@ return Backbone.View.extend({
 
         this.worker = new Worker(this.game);
         this.game.add.existing(this.worker);
+        console.log(this.worker);
     },
     update: function() {
         this.game.physics.arcade.collide(this.worker, this.map.platforms);
-        this.game.physics.arcade.collide(this.worker, this.map.berries, Worker.becomeSuper);
+        this.game.physics.arcade.collide(this.worker, this.map.berries, function(worker, berry) {
+            worker.die();
+        });
         this.game.physics.arcade.collide(this.map.platforms, this.map.berries);
         this.game.physics.arcade.collide(this.map.berries, this.map.berries);
         

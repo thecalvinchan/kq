@@ -1,4 +1,4 @@
-define([], function() {
+define(['js/models/gate'], function(Gate) {
     function Map(game) {
         this.game = game;
         Phaser.Group.call(this, game, null, 'map');
@@ -6,6 +6,9 @@ define([], function() {
 
         var sky = new Phaser.TileSprite(game, 0, 0, window.innerWidth, window.innerHeight, 'sky');
         this.add(sky);
+
+        this.gate = new Gate(game, 300, game.world.height - 32);
+        this.add(this.gate);
 
         //creates platforms
         this.platforms = new Phaser.Group(game, this, 'platforms');
@@ -31,7 +34,7 @@ define([], function() {
             berry.body.gravity.y = 700;
 
             //  This just gives each star a slightly random bounce value
-            berry.body.bounce.y = 0.2;
+            berry.body.bounce.y = 0;
 
             berry.body.collideWorldBounds = true;
         }
