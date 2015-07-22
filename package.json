@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thecalvinchan/kq#readme",
   "dependencies": {
+    "handlebars": "^3.0.3",
     "hapi": "^8.8.0"
   }
 }
