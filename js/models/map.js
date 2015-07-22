@@ -7,8 +7,11 @@ define(['js/models/gate'], function(Gate) {
         var sky = new Phaser.TileSprite(game, 0, 0, window.innerWidth, window.innerHeight, 'sky');
         this.add(sky);
 
-        this.gate = new Gate(game, 300, game.world.height - 32);
-        this.add(this.gate);
+        this.gates = new Phaser.Group(game, this, 'gates');
+        this.gates.enableBody = true;
+
+        var gate = new Gate(game, 300, game.world.height - 32, Gate.WARRIOR_GATE);
+        this.gates.add(gate);
 
         //creates platforms
         this.platforms = new Phaser.Group(game, this, 'platforms');

@@ -40,15 +40,21 @@ return Backbone.View.extend({
     },
     update: function() {
         this.game.physics.arcade.collide(this.worker, this.map.platforms);
+
         this.game.physics.arcade.collide(this.worker, this.map.berries, function(worker, berry) {
-            worker.die();
+            worker.grabBerry(berry);
         });
+        this.game.physics.arcade.overlap(this.worker, this.map.gates, function(worker, gate) {
+            gate.activate(worker); 
+        }, function(worker, berry) {
+            return worker.isHoldingBerry();
+        });
+
         this.game.physics.arcade.collide(this.map.platforms, this.map.berries);
         this.game.physics.arcade.collide(this.map.berries, this.map.berries);
         
         var cursors = this.game.input.keyboard.createCursorKeys();
 
-        this.worker.body.velocity.x = 0;
         if (cursors.left.isDown) {
             this.worker.moveLeft();
         } else if (cursors.right.isDown) {
